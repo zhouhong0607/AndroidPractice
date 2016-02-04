@@ -10,24 +10,25 @@ public class SettingsActivity extends Activity
 {
 
 	private CheckBox vibrate;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
-		vibrate=(CheckBox)findViewById(R.id.vibrate_checkbox);
-		Settings settings=((OnYourBike)getApplication()).getSettings();
+		vibrate = (CheckBox) findViewById(R.id.vibrate_checkbox);
+		Settings settings = ((OnYourBike) getApplication()).getSettings();
 		vibrate.setChecked(settings.isVibrateOn(this));
 	}
-@Override
+
+	@Override
 	public void onStop()
 	{
-	super.onStop();
-	Settings settings=((OnYourBike)getApplication()).getSettings();
-	settings.setVibrate(this,vibrate.isChecked());
+		super.onStop();
+		Settings settings = ((OnYourBike) getApplication()).getSettings();
+		settings.setVibrate(this, vibrate.isChecked());
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
