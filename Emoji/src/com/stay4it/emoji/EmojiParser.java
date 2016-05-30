@@ -206,7 +206,9 @@ public class EmojiParser
 		Resources resources = context.getResources();
 		String unicode = parseEmoji(content);
 		Matcher matcher = pattern.matcher(unicode);
+
 		SpannableStringBuilder sBuilder = new SpannableStringBuilder(unicode);
+
 		Drawable drawable = null;
 		ImageSpan span = null;
 		while (matcher.find())

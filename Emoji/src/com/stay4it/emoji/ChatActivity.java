@@ -48,6 +48,8 @@ public class ChatActivity extends Activity
 		mChatLsv.setAdapter(adapter);
 		mEmoView = (EmoticonView) this.findViewById(R.id.message_layout_emotes);
 		mEmoView.init(this, this, getResources());
+		mEmoView.setVisibility(View.GONE);
+		
 		mChatEditorTxt = (EditText) this.findViewById(R.id.mChatEditorTxt);
 		mChatSendBtn = (Button) this.findViewById(R.id.mChatSendBtn);
 		mChatSendBtn.setOnClickListener(this);
@@ -55,7 +57,6 @@ public class ChatActivity extends Activity
 
 	class ChatAdapter extends BaseAdapter
 	{
-
 		@Override
 		public int getCount()
 		{
@@ -137,7 +138,10 @@ public class ChatActivity extends Activity
 	@Override
 	public void onClick(View v)
 	{
-		String message = mChatEditorTxt.getText().toString();
+		String edit=mChatEditorTxt.getText().toString();
+		String message = S2Emoji.getInstance().conver2Emoji(edit);
+		
+//		String message =mChatEditorTxt.getText().toString();
 		if (!"".equals(message.trim()))
 		{
 			messages.add(message);
